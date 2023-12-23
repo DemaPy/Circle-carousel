@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;400;700&display=swap"
+      rel="stylesheet"
+    />
+    <title>Document</title>
+
+    <style>
+      body {
+        margin: 0;
+        height: 100vh;
+        font-family: "Poppins";
+      }
+
+      .container {
+        min-height: 100%;
+        background-image: linear-gradient(
+          to right bottom,
+          #fdffd8,
+          #f7f5c8,
+          #f3ebb9,
+          #efe1a9,
+          #ebd79a,
+          #eace8a,
+          #e9c47b,
+          #e8ba6c,
+          #e9ad5a,
+          #eba049,
+          #ee923a,
+          #f0822d
+        );
+        padding-inline: 4rem;
+        padding-block: 4rem;
+      }
+
+      .hero {
+        z-index: 3;
+        position: relative;
+        text-align: left;
+        height: 90%;
+        display: flex;
+        flex-direction: column;
+      }
+
+      .hero h1 {
+        max-width: 70%;
+        color: whitesmoke;
+        line-height: 1.1;
+        font-size: 7rem;
+        margin: 0;
+        margin-bottom: 2rem;
+      }
+
+      .hero p {
+        color: whitesmoke;
+        max-width: 60%;
+      }
+
+      .burgers {
+        margin-top: auto;
+        display: flex;
+
+        flex-wrap: wrap;
+        gap: 1rem;
+      }
+
+      .burgers p {
+        font-size: 2rem !important;
+      }
+
+      @media screen and (max-width: 768px) {
+        .hero {
+          max-width: 100%;
+        }
+
+        .hero p {
+          max-width: 100%;
+        }
+
+        .burgers p {
+          font-size: 1rem !important;
+        }
+
+        .container {
+          padding-inline: 1rem;
+          padding-block: 1rem;
+        }
+        .hero h1 {
+          font-size: 3rem;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!--?xml version="1.0" standalone="no"?-->
+    <div class="container">
+      <svg
+        style="
+          position: absolute;
+          width: 600px;
+          height: 600px;
+          filter: blur(200px);
+          top: -100px;
+          left: -100px;
+          z-index: 2;
+        "
+        id="sw-js-blob-svg"
+        viewBox="0 0 100 100"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <defs>
+          <linearGradient id="sw-gradient" x1="0" x2="1" y1="1" y2="0">
+            <stop
+              id="stop1"
+              stop-color="rgba(248, 117, 55, 1)"
+              offset="0%"
+            ></stop>
+            <stop
+              id="stop2"
+              stop-color="rgba(251, 168, 31, 1)"
+              offset="100%"
+            ></stop>
+          </linearGradient>
+        </defs>
+        <path
+          fill="url(#sw-gradient)"
+          d="M18.1,-27.1C22.8,-25,25.7,-19.1,29.1,-12.9C32.5,-6.8,36.5,-0.5,37.4,6.6C38.3,13.8,36.3,21.7,30.9,25.5C25.6,29.3,17,29,9.5,30.5C1.9,31.9,-4.7,35,-11.9,35.3C-19.1,35.5,-27,32.9,-30.6,27.3C-34.1,21.7,-33.3,13.2,-33.2,5.6C-33.1,-2.1,-33.6,-8.9,-31.8,-15.2C-30,-21.6,-25.8,-27.5,-20,-29.1C-14.3,-30.7,-7.2,-28,-0.3,-27.6C6.6,-27.2,13.3,-29.1,18.1,-27.1Z"
+          width="100%"
+          height="100%"
+          transform="translate(50 50)"
+          stroke-width="0"
+          style="transition: all 0.3s ease 0s"
+        ></path>
+      </svg>
+      <div class="hero">
+        <div>
+          <h1>Choose your favorite burger</h1>
+          <p>
+            🍔 <strong>Crafted Perfection:</strong> <br />
+            Our burgers are not just a meal; they're a work of art. From the
+            juiciest patties to the freshest produce, every element is carefully
+            selected and thoughtfully combined to create a culinary masterpiece.
+          </p>
+
+          <p>
+            🌟 <strong>Diverse Selection:</strong> <br />
+            Explore our diverse menu featuring a variety of mouth-watering
+            burgers, from classic favorites to innovative creations. Vegetarian
+            or meat lover, we have something to satisfy every craving.
+          </p>
+
+          <p>
+            👨‍🍳 <strong>Chef's Specials:</strong> <br />
+            Indulge in our chef's special creations, unique to Your Burger
+            Place. These culinary delights are crafted with a fusion of flavors
+            that will tantalize your taste buds and leave you craving for more.
+          </p>
+        </div>
+        <div class="burgers"></div>
+      </div>
+    </div>
+
+    <div class="orbit">
+      <div class="parent"></div>
+    </div>
+
+    <script>
+      const parent = document.querySelector(".parent");
+      const orbit = document.querySelector(".orbit");
+      const burgers = document.querySelector(".burgers");
+
+      const options = {
+        parent: { position: "right-bottom" },
+        offset: "400px",
+        imageSize: "400",
+        initialDegree: "20",
+        speedRotation: 0.05,
+        images: [
+          {
+            id: "1",
+            src: "/bg1.png",
+            name: "Royal Onion",
+          },
+          {
+            id: "2",
+            src: "/bg2.png",
+            name: "Double Grander",
+          },
+          {
+            id: "3",
+            src: "/bg3.png",
+            name: "MkChiken jalapeno",
+          },
+          {
+            id: "4",
+            src: "/bg4.png",
+            name: "Sicario Burger",
+          },
+          // {
+          //   src: "/bg5.png",
+          //   name: "Burger 5",
+          // },
+        ],
+      };
+
+      let reqAnimFrame;
+      function init(options) {
+        generateNodes(options);
+        createOrbit(options);
+        createMenu();
+        animate();
+      }
+
+      const imagesNodes = [];
+      const imagesNames = [];
+      function generateNodes(options) {
+        const length = options.images.length;
+        let degree = computeDegreePerImage({ amountOfImages: length });
+
+        for (let index = 0; index < length; index++) {
+          const computeDegreeForImage = degree * index;
+          const image = options.images[index];
+          const img = document.createElement("img");
+          img.setAttribute("class", "item");
+          img.setAttribute("data-order", image.id);
+          img.setAttribute("data-rotate-degree", computeDegreeForImage);
+          img.setAttribute(
+            "style",
+            `
+              position: absolute;
+              top: calc(${options.imageSize}px / 2);
+              left: calc(${options.imageSize}px / 2);
+              width: ${options.imageSize}px;
+              height: ${options.imageSize}px;
+              transition: scale 2s;
+              transform: translate(
+              calc(cos(${computeDegreeForImage}deg) * ${options.offset}),
+              calc(sin(${computeDegreeForImage}deg) * ${options.offset})
+              );
+              `
+          );
+          img.src = image.src;
+
+          const p = document.createElement("p");
+          p.setAttribute(
+            "style",
+            "border-radius: 8px; font-size: 40px; margin-bottom: 0px; margin-top: 12px; color: white; font-weight: bold; cursor: pointer; width: fit-content;"
+          );
+          p.append(document.createTextNode(image.name));
+          p.addEventListener("click", (e) => scale(image.id, index));
+
+          imagesNodes.push(img);
+          imagesNames.push(p);
+        }
+      }
+
+      function computeDegreePerImage({ amountOfImages }) {
+        const CIRCLE = 360;
+        return CIRCLE / amountOfImages;
+      }
+
+      function createOrbit(options) {
+        if ("parent" in options) {
+          if (options.parent.position === "right-bottom") {
+            orbit.style.right = -options.imageSize + "px";
+            orbit.style.bottom = -options.imageSize + "px";
+            orbit.style.position = "fixed";
+
+            orbit.style.width = options.imageSize * 2 + "px";
+            orbit.style.height = options.imageSize * 2 + "px";
+
+            // swap orbit if right side selected
+            orbit.style.transform = "scaleX(-1)";
+
+            parent.style.position = "relative";
+            parent.style.width = "100%";
+            parent.style.height = "100%";
+            parent.style.borderRadius = "50%";
+            parent.style.border = "2px solid white";
+          }
+        }
+        parent.append(...imagesNodes);
+      }
+
+      function createMenu() {
+        burgers.append(...imagesNames);
+      }
+
+      function scale(selectedImage_id, idx) {
+        for (let index = 0; index < imagesNodes.length; index++) {
+          const image = imagesNodes[index];
+          const id = image.getAttribute("data-order");
+          if (id === selectedImage_id) {
+            image.style.scale = "1.1";
+          } else {
+            image.style.scale = "1";
+          }
+          // ?
+          // image.setAttribute("data-rotate-degree", 90 * index);
+        }
+      }
+
+      let i = 0;
+      function animate() {
+        for (const image of imagesNodes) {
+          let degree = image.getAttribute("data-rotate-degree");
+          degree = Number(degree) + i;
+          image.style.transform = `translate(calc(cos(${degree}deg) * ${options.offset}), calc(sin(${degree}deg) * ${options.offset}))`;
+        }
+        i += 1 * options.speedRotation;
+        reqAnimFrame = requestAnimationFrame(animate);
+      }
+      init(options);
+    </script>
+  </body>
+</html>
